@@ -12,9 +12,13 @@ const root = ReactDOM.createRoot(document.getElementById('root'))
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Home />,
+    element: <App />,
     errorElement: <NotFoundPage />,
     children: [
+      {
+        index: true,
+        element: <Home />,
+      },
       {
         path: 'category/:sort',
         element: <ProductPage />,
