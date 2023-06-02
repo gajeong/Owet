@@ -1,0 +1,47 @@
+{
+  "data": [
+    {
+      "title": "Shop",
+      "id": 1,
+      "cursor": false,
+      "items": [
+        {
+          "title": "ALL",
+          "id": 11,
+          "items": [],
+          "to": "category/all"
+        },
+        {
+          "title": "Body Lotion",
+          "id": 12,
+          "items": [],
+          "to": "category/body-lotion"
+        },
+        {
+          "title": "Body Oil",
+          "id": 13,
+          "items": [],
+          "to": "category/body-oil"
+        },
+        {
+          "title": "Body Scrub",
+          "id": 14,
+          "items": [],
+          "to": "category/body-scrub"
+        }
+      ]
+    },
+    {
+      "title": "About",
+      "id": 2,
+      "cursor": true,
+      "items ": []
+    },
+    {
+      "title": "Info",
+      "id": 3,
+      "cursor": true,
+      "items": []
+    }
+  ]
+}
