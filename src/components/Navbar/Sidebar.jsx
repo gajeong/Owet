@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import styles from './Sidebar.module.css'
+
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 export default function Sidebar({ isOpen, handleOpen }) {
@@ -16,7 +16,7 @@ export default function Sidebar({ isOpen, handleOpen }) {
 
   return (
     <>
-      <section className={` ${styles.playfair} z-50 `}>
+      <section className='playfair z-50'>
         {isLoading && <p>loading</p>}
         {error && <p>error</p>}
 
