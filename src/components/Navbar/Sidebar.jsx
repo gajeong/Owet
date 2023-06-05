@@ -23,7 +23,11 @@ export default function Sidebar({ isOpen, handleOpen }) {
         <nav
           id='nav'
           className={`fixed position top-0 min-h-screen w-64 bg-brown1 z-30 p-4 animate__animated ${
-            isOpen ? ' animate__fadeInLeft' : 'animate__fadeOutLeft'
+            isOpen === 'open'
+              ? ' animate__fadeInLeft'
+              : isOpen === 'close'
+              ? 'animate__fadeOutLeft'
+              : 'hidden'
           }`}
         >
           {menus?.map((parent) => (
@@ -48,7 +52,7 @@ export default function Sidebar({ isOpen, handleOpen }) {
         </nav>
       </section>
       {/* 닫게 해줄 아웃 컨테이너 */}
-      {isOpen && (
+      {isOpen === 'open' && (
         <div
           className='bg-gray-950 fixed w-full min-h-screen top-0 opacity-60 z-10'
           onClick={() => handleOpen()}

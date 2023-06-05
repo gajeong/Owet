@@ -1,5 +1,11 @@
-@import url(//fonts.googleapis.com/earlyaccess/jejumyeongjo.css);
+@font-face {
+  font-family: 'RIDIBatang';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
 
-.jeju * {
-  font-family: 'Jeju Myeongjo', serif;
+.myungjo * {
+  font-family: 'RIDIBatang';
 }

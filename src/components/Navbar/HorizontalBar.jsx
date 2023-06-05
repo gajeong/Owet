@@ -6,13 +6,16 @@ import { ReactComponent as Logo } from '../../assets/logo.svg'
 import Sidebar from './Sidebar'
 
 export default function HorizontalBar() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState('none')
 
   return (
     <>
       <header className='flex items-center justify-between p-4'>
         <div className='w-28 flex-none'>
-          <HiBars3 className='cursor-pointer' onClick={() => setIsOpen(true)} />
+          <HiBars3
+            className='cursor-pointer'
+            onClick={() => setIsOpen('open')}
+          />
         </div>
         <Logo width='64' className='cursor-pointer' />
         <div className='flex flex-none grid-cols-3 gap-4 w-28 justify-end'>
@@ -22,7 +25,7 @@ export default function HorizontalBar() {
         </div>
       </header>
 
-      <Sidebar isOpen={isOpen} handleOpen={() => setIsOpen(!isOpen)} />
+      <Sidebar isOpen={isOpen} handleOpen={() => setIsOpen('close')} />
     </>
   )
 }
