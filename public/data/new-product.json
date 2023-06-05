@@ -1,0 +1,25 @@
+{
+  "data": [
+    {
+      "id": 593579,
+      "itemNm": "파인 샤워오일 (DENSE)",
+      "price": 38000,
+      "url": "https://o-wet.com/web/product/big/202304/63c702658133d8e7387109ac7661542a.jpg",
+      "sort": "Shower Oil"
+    },
+    {
+      "id": 593572,
+      "itemNm": "퍼밍 바디로션 (DENSE)",
+      "price": 30000,
+      "url": "https://o-wet.com/web/product/big/202304/f7a8c664cbe0dfa142fc820324824d7f.jpg",
+      "sort": "Body Lotion"
+    },
+    {
+      "id": 593523,
+      "itemNm": "휩드 바디스크럽",
+      "price": 35000,
+      "url": "https://o-wet.com/web/product/big/202304/33ba1c459e3a0f51cddf16d4a00a90f7.jpg",
+      "sort": "Body Scrub"
+    }
+  ]
+}
