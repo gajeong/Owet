@@ -4,8 +4,6 @@ import TopSaleBar from './components/Navbar/TopSaleBar'
 import HorizontalBar from './components/Navbar/HorizontalBar'
 import MoveHorizontal from './components/Home/MoveHorizontal'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import { SidebarProvider } from './context/SidebarStatusContext'
 const queryClient = new QueryClient()
 function App() {
   return (
