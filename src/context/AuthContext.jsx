@@ -1,8 +1,28 @@
-const { createContext, useState } = require('react')
+import { getAuthState } from '../api/firebase'
+
+const {
+  createContext,
+  useState,
+  useEffect,
+  useContext,
+} = require('react')
 
 const AuthContext = createContext()
 
 export default function AuthContextProvider({ children }) {
   const [user, setUser] = useState()
-  return <AuthContext.Provider value={user}>{children}</AuthContext.Provider>
+
+  useEffect(() => {
+    getAuthState(setUser)
+  }, [])
+
+  return (
+    <AuthContext.Provider value={{ user }}>
+      {children}
+    </AuthContext.Provider>
+  )
+}
+
+export function useAuthContext() {
+  return useContext(AuthContext)
 }

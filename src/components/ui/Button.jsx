@@ -5,6 +5,7 @@ export default function Button({
   onClick,
   outline,
   color,
+  bg,
   width,
   textColor,
 }) {
@@ -12,11 +13,11 @@ export default function Button({
     <button
       className={`py-2 px-4 outline outline-1  mt-1 ${
         'text-' + textColor
-      } text-xs  ${'bg-' + color} ${
+      } text-xs ${'bg-' + bg} ${
         'outline-' + outline
       } ${width}
         hover:brightness-125
-        hover:drop-shadow-md
+        hover:drop-shadow-m
         `}
       onClick={onClick}
     >

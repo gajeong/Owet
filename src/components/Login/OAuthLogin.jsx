@@ -1,5 +1,6 @@
 import React from 'react'
 import Button from '../ui/Button'
+import { login } from '../../api/firebase'
 
 export default function OAuthLogin() {
   return (
@@ -10,6 +11,7 @@ export default function OAuthLogin() {
         color='white'
         width='w-60'
         textColor='slate-500'
+        onClick={login}
       ></Button>
     </div>
   )

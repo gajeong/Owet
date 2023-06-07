@@ -27,6 +27,7 @@ export default function LoginPage() {
             text='로그인'
             outline='brown5'
             color='brown5'
+            bg='brown4'
             width='w-60'
             textColor='white'
           />

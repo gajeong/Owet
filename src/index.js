@@ -3,12 +3,18 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import {
+  RouterProvider,
+  createBrowserRouter,
+} from 'react-router-dom'
 import Home from './pages/Home/Home'
 import ProductPage from './pages/Product/ProductPage'
 import LoginPage from './pages/Login/LoginPage'
 import NotFoundPage from './pages/NotFound/NotFoundPage'
-const root = ReactDOM.createRoot(document.getElementById('root'))
+import MyPage from './pages/MyPage/MyPage'
+const root = ReactDOM.createRoot(
+  document.getElementById('root')
+)
 const router = createBrowserRouter([
   {
     path: '/',
@@ -26,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: 'login',
         element: <LoginPage />,
+      },
+      {
+        path: 'mypage',
+        element: <MyPage />,
       },
     ],
   },

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
+import { logout } from '../../api/firebase'
+import { useAuthContext } from '../../context/AuthContext'
 export default function Sidebar({ isOpen, handleOpen }) {
   const {
     isLoading,
@@ -10,19 +12,23 @@ export default function Sidebar({ isOpen, handleOpen }) {
   } = useQuery(
     ['sidebar'],
     async () =>
-      axios.get('data/sidebar-menu.json').then((res) => res.data.data),
+      axios
+        .get('data/sidebar-menu.json')
+        .then((res) => res.data.data),
     { staleTime: 1000 * 60 * 100 }
   )
 
+  const { user } = useAuthContext()
+
   return (
     <>
-      <section className='playfair z-50'>
+      <section className=' z-50 '>
         {isLoading && <p>loading</p>}
         {error && <p>error</p>}
 
         <nav
           id='nav'
-          className={`fixed position top-0 min-h-screen w-64 bg-brown1 z-30 p-4 animate__animated ${
+          className={`fixed flex-col position top-0 min-h-screen w-64 bg-brown1 z-30 p-4 animate__animated ${
             isOpen === 'open'
               ? ' animate__fadeInLeft'
               : isOpen === 'close'
@@ -33,7 +39,7 @@ export default function Sidebar({ isOpen, handleOpen }) {
           {menus?.map((parent) => (
             <ol
               key={parent.id}
-              className={`text-xl text-brown5 font-bold mb-2 ${
+              className={`playfair text-xl text-brown5 font-bold mb-2 ${
                 parent.cursor ? 'cursor-pointer' : ''
               }`}
             >
@@ -49,6 +55,20 @@ export default function Sidebar({ isOpen, handleOpen }) {
               ))}
             </ol>
           ))}
+          {user && (
+            <div className='fixed bottom-2 text-xs '>
+              <p className='p-1 cursor-pointer'>장바구니</p>
+              <p className='p-1 cursor-pointer'>
+                마이페이지
+              </p>
+              <p
+                className='p-1 cursor-pointer'
+                onClick={logout}
+              >
+                로그아웃
+              </p>
+            </div>
+          )}
         </nav>
       </section>
       {/* 닫게 해줄 아웃 컨테이너 */}
