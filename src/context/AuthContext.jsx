@@ -1,11 +1,10 @@
 import { getAuthState } from '../api/firebase'
-
-const {
+import {
   createContext,
-  useState,
-  useEffect,
   useContext,
-} = require('react')
+  useEffect,
+  useState,
+} from 'react'
 
 const AuthContext = createContext()
 
@@ -13,7 +12,9 @@ export default function AuthContextProvider({ children }) {
   const [user, setUser] = useState()
 
   useEffect(() => {
-    getAuthState(setUser)
+    getAuthState((user) => {
+      setUser(user)
+    })
   }, [])
 
   return (

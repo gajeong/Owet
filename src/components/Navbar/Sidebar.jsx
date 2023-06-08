@@ -4,26 +4,25 @@ import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import { logout } from '../../api/firebase'
 import { useAuthContext } from '../../context/AuthContext'
+import { useNavigate } from 'react-router-dom'
 export default function Sidebar({ isOpen, handleOpen }) {
-  const {
-    isLoading,
-    error,
-    data: menus,
-  } = useQuery(
+  const navigate = useNavigate()
+  const { error, data: menus } = useQuery(
     ['sidebar'],
     async () =>
-      axios
+      await axios
         .get('data/sidebar-menu.json')
         .then((res) => res.data.data),
     { staleTime: 1000 * 60 * 100 }
   )
 
   const { user } = useAuthContext()
-
+  const handleLogout = () => {
+    navigate('/')
+  }
   return (
     <>
       <section className=' z-50 '>
-        {isLoading && <p>loading</p>}
         {error && <p>error</p>}
 
         <nav
@@ -63,7 +62,7 @@ export default function Sidebar({ isOpen, handleOpen }) {
               </p>
               <p
                 className='p-1 cursor-pointer'
-                onClick={logout}
+                onClick={() => logout(handleLogout)}
               >
                 로그아웃
               </p>

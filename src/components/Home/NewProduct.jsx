@@ -11,7 +11,9 @@ export default function NewProduct() {
   } = useQuery(
     ['new-product'],
     async () =>
-      axios.get('/data/new-product.json').then((res) => res.data.data),
+      axios
+        .get('/data/new-product.json')
+        .then((res) => res.data.data),
     { staleTime: 1000 * 60 * 100 }
   )
 
@@ -20,8 +22,8 @@ export default function NewProduct() {
       {isLoading && <p>Loading</p>}
       {error && <p>Error</p>}
       {newItems && (
-        <div className='grid grid-cols-4 gap-4'>
-          <div className="bg-[url('https://o-wet.com/web/upload/drawcode/d_img/list.jpg')] bg-cover playfair text-2xl p-4 text-end font-semibold">
+        <div className='grid grid-cols-4 gap-4 max-sm:grid-cols-2'>
+          <div className="bg-[url('https://o-wet.com/web/upload/drawcode/d_img/list.jpg')] bg-cover playfair text-white text-4xl p-4 text-end font-semibold">
             New
           </div>
 

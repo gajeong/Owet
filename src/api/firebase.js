@@ -8,6 +8,12 @@ import {
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app'
+import {
+  getDatabase,
+  ref,
+  child,
+  get,
+} from 'firebase/database'
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -26,21 +32,38 @@ const app = initializeApp(firebaseConfig)
 const provider = new GoogleAuthProvider()
 const auth = getAuth()
 
-export function login() {
-  signInWithPopup(auth, provider)
+const database = getDatabase(app)
+
+export async function login(callback) {
+  await signInWithPopup(auth, provider)
     .then((result) => {
-      const user = result.user
-      console.log(user)
+      callback()
     })
     .catch(console.error)
 }
 
-export function logout() {
-  signOut(auth).then(console.error)
+export async function logout(callback) {
+  await signOut(auth).then(() => callback())
 }
 
 export function getAuthState(callback) {
   onAuthStateChanged(auth, async (user) => {
-    callback(user)
+    const updatedUser = user
+      ? await getUserRole(user)
+      : null
+    callback(updatedUser)
+  })
+}
+
+async function getUserRole(user) {
+  return get(ref(database, 'admins')).then((snapshot) => {
+    if (snapshot.exists) {
+      const admins = snapshot.val()
+      const isAdmin = admins.includes(user.uid)
+      return {
+        ...user,
+        isAdmin,
+      }
+    }
   })
 }

@@ -12,6 +12,8 @@ import ProductPage from './pages/Product/ProductPage'
 import LoginPage from './pages/Login/LoginPage'
 import NotFoundPage from './pages/NotFound/NotFoundPage'
 import MyPage from './pages/MyPage/MyPage'
+import NewProductPage from './pages/NewProduct/NewProductPage'
+import ProtectedRoute from './pages/ProtectedRoute'
 const root = ReactDOM.createRoot(
   document.getElementById('root')
 )
@@ -36,6 +38,14 @@ const router = createBrowserRouter([
       {
         path: 'mypage',
         element: <MyPage />,
+      },
+      {
+        path: 'products/new',
+        element: (
+          <ProtectedRoute requireAdmin>
+            <NewProductPage />
+          </ProtectedRoute>
+        ),
       },
     ],
   },
