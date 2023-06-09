@@ -15,9 +15,8 @@ module.exports = {
       colors: {
         brown1: '#F1DEC9',
         brown2: '#C8B6A6',
-        brown3: '#A4907C',
-        brown4: '#8D7B68',
-        brand: '#352342',
+        brown3: '#8D7B68',
+        brown4: '#352342',
       },
     },
   },

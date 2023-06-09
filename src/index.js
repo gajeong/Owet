@@ -14,6 +14,7 @@ import NotFoundPage from './pages/NotFound/NotFoundPage'
 import MyPage from './pages/MyPage/MyPage'
 import NewProductPage from './pages/NewProduct/NewProductPage'
 import ProtectedRoute from './pages/ProtectedRoute'
+import ProductInfoPage from './pages/Product/ProductInfoPage'
 const root = ReactDOM.createRoot(
   document.getElementById('root')
 )
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
         element: <ProductPage />,
       },
       {
+        path: 'product/:productId',
+        element: <ProductInfoPage />,
+      },
+      {
         path: 'login',
         element: <LoginPage />,
       },
@@ -39,6 +44,7 @@ const router = createBrowserRouter([
         path: 'mypage',
         element: <MyPage />,
       },
+
       {
         path: 'products/new',
         element: (

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
@@ -20,6 +20,12 @@ export default function Sidebar({ isOpen, handleOpen }) {
   const handleLogout = () => {
     navigate('/')
   }
+
+  const handleRoute = (to) => {
+    navigate(to)
+    handleOpen()
+  }
+
   return (
     <>
       <section className=' z-50 '>
@@ -38,7 +44,7 @@ export default function Sidebar({ isOpen, handleOpen }) {
           {menus?.map((parent) => (
             <ol
               key={parent.id}
-              className={`playfair text-xl text-brown5 font-bold mb-2 ${
+              className={`playfair text-xl text-brown4 font-bold mb-2 ${
                 parent.cursor ? 'cursor-pointer' : ''
               }`}
             >
@@ -47,6 +53,7 @@ export default function Sidebar({ isOpen, handleOpen }) {
                 <li
                   className='py-1 flex items-center text-lg font-normal ml-4 hover:underline underline-offset-4 decoration-brown4 cursor-pointer hover:animate-pulse'
                   key={menu.id}
+                  onClick={() => handleRoute(menu.to)}
                 >
                   <dd className='w-1 h-1 bg-brown4 mr-2'></dd>
                   <span>{menu.title}</span>
@@ -56,6 +63,15 @@ export default function Sidebar({ isOpen, handleOpen }) {
           ))}
           {user && (
             <div className='fixed bottom-2 text-xs '>
+              {user.isAdmin && (
+                <p
+                  className='p-1 cursor-pointer'
+                  onClick={() => navigate('/products/new')}
+                >
+                  상품등록
+                </p>
+              )}
+
               <p className='p-1 cursor-pointer'>장바구니</p>
               <p className='p-1 cursor-pointer'>
                 마이페이지

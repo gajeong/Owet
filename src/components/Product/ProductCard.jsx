@@ -1,8 +1,13 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export default function ProductCard({ data }) {
+  const navigate = useNavigate()
   return (
-    <div className='cursor-pointer'>
+    <div
+      className='cursor-pointer'
+      onClick={() => navigate(`/product/${data.id}`)}
+    >
       <img
         src={data.url}
         alt={data.itemNm}
